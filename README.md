@@ -1,5 +1,7 @@
 # GCP Compute Engine Pricing Client
 
+> **Disclaimer:** This is not an official Google Cloud supported tool. It is based on the Google Cloud Billing API and the [publicly available SKU lists](https://cloud.google.com/skus?filter=6F81-5844-456A). It calculates strictly base on-demand prices and does not take into account any contract-specific discounts, reservations, committed use discounts, prepayments, or single tenancy rates.
+
 A command-line Python utility to dynamically calculate the hourly and monthly on-demand costs of Google Cloud Compute Engine instances.
 
 ## Background
