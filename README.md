@@ -44,6 +44,16 @@ Copy the `.env.example` file to `.env` in the project directory and update the v
 cp .env.example .env
 ```
 
+### 4. Testing (Optional)
+This project uses `pytest` for unit testing across parsing, pricing, caching, and CLI operations. Unit tests use `pytest-mock` to avoid making live Google Cloud API calls or generating real cache files:
+```bash
+# Install testing dependencies
+pip install pytest pytest-mock
+
+# Run the test suite
+python -m pytest tests/
+```
+
 ## Usage
 
 Run the `main.py` script and provide the instance type as a positional argument.

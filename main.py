@@ -209,7 +209,7 @@ def calculate_cost(instance_type, region=None):
     
     return total_monthly
 
-if __name__ == "__main__":
+def main(args=None):
     parser = argparse.ArgumentParser(description="Estimate GCP Compute Engine Costs")
     parser.add_argument(
         "instance_type", 
@@ -237,35 +237,38 @@ if __name__ == "__main__":
         help="When in quiet mode, prepend the instance name to the output (e.g., n4-standard-16,603.84)"
     )
     
-    args = parser.parse_args()
+    parsed_args = parser.parse_args(args)
     
-    if not args.instance_type and not args.file:
+    if not parsed_args.instance_type and not parsed_args.file:
         parser.error("You must provide either an instance_type or a --file argument.")
 
     instances = []
-    if args.file:
-        if os.path.exists(args.file):
-            with open(args.file, 'r') as f:
+    if parsed_args.file:
+        if os.path.exists(parsed_args.file):
+            with open(parsed_args.file, 'r') as f:
                 instances.extend([line.strip() for line in f if line.strip() and not line.strip().startswith("#")])
         else:
-            print(f"Error: File '{args.file}' not found.")
+            print(f"Error: File '{parsed_args.file}' not found.", file=sys.stderr)
             sys.exit(1)
             
-    if args.instance_type:
-        instances.append(args.instance_type)
+    if parsed_args.instance_type:
+        instances.append(parsed_args.instance_type)
     
     original_stdout = sys.stdout
     for instance in instances:
-        if args.quiet:
+        if parsed_args.quiet:
             sys.stdout = open(os.devnull, 'w')
             
-        monthly_cost = calculate_cost(instance, region=args.region)
+        monthly_cost = calculate_cost(instance, region=parsed_args.region)
         
-        if args.quiet:
+        if parsed_args.quiet:
             sys.stdout.close()
             sys.stdout = original_stdout
             if monthly_cost is not None:
-                if args.print_name:
+                if parsed_args.print_name:
                     print(f"{instance},{monthly_cost:.2f}")
                 else:
                     print(f"{monthly_cost:.2f}")
+
+if __name__ == "__main__":
+    main()
