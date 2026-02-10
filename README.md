@@ -18,6 +18,11 @@ To ensure fast execution, the tool implements a **two-layer local caching system
 - **Auto Resource Calculation:** Dynamically calculates total RAM based on standard GCP CPU-to-RAM ratios for standard, highmem, and highcpu profiles.
 - **Environment Variables:** Set defaults via a `.env` file for project and region context without exposing secrets in your script.
 
+## Limitations
+- **No Validation:** The tool does not validate whether the input machine types actually exist. It merely relies on predefined CPU-to-Memory ratios to determine the number of vCPUs and Memory, multiplying these by the SKU unit rate to produce a price.
+- **No Custom Machine Types:** It does not yet support custom machine types.
+- **No OS License Costs:** The calculation is purely based on vCPU and Memory and does not include OS license costs.
+
 ## Installation
 
 ### 1. Prerequisites
