@@ -29,10 +29,25 @@ MACHINE_SPECS = {
         "search_cpu": "n2 instance core", 
         "search_ram": "n2 instance ram"
     },
+    "n2d": {
+        "ratios": {"standard": 4.0, "highmem": 8.0, "highcpu": 1.0},
+        "search_cpu": "n2d amd instance core",
+        "search_ram": "n2d amd instance ram"
+    },
     "n4": {
         "ratios": {"standard": 4.0, "highmem": 8.0, "highcpu": 1.0},
         "search_cpu": "n4 instance core", 
         "search_ram": "n4 instance ram"
+    },
+    "n4a": {
+        "ratios": {"standard": 4.0, "highmem": 8.0, "highcpu": 1.0},
+        "search_cpu": "n4a instance core",
+        "search_ram": "n4a instance ram"
+    },
+    "n4d": {
+        "ratios": {"standard": 4.0, "highmem": 8.0, "highcpu": 1.0},
+        "search_cpu": "n4d instance core",
+        "search_ram": "n4d instance ram"
     },
     "e2": {
         "ratios": {"standard": 4.0, "highmem": 8.0, "highcpu": 1.0},
@@ -58,14 +73,20 @@ MACHINE_SPECS = {
     },
     "c4": {
         "ratios": {"standard": 3.75, "highmem": 7.75, "highcpu": 2.0},
-        "search_cpu": "c4 instance core", 
+        "search_cpu": "c4 instance core",
         "search_ram": "c4 instance ram"
+    },
+    "c4a": {
+        "ratios": {"standard": 4.0, "highmem": 8.0, "highcpu": 2.0},
+        "search_cpu": "c4a arm instance core",
+        "search_ram": "c4a arm instance ram"
     },
     "c4d": {
         "ratios": {"standard": 4.0, "highmem": 8.0, "highcpu": 2.0},
-        "search_cpu": "c4d instance core", 
+        "search_cpu": "c4d instance core",
         "search_ram": "c4d instance ram"
     },
+
 
     # --- MEMORY OPTIMIZED (FIXED) ---
     "m3": {
