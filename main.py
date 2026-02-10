@@ -14,9 +14,6 @@ CACHE_FILE = os.path.join(CACHE_DIR, "pricing_cache.json")
 SKU_CACHE_FILE = os.path.join(CACHE_DIR, "sku_cache.json")
 CACHE_EXPIRY = 86400  # 1 day in seconds
 
-import os
-import json
-
 # Setup config path and load MACHINE_SPECS
 CONFIG_FILE = os.path.join(os.path.dirname(__file__), "config", "machine_specs.json")
 with open(CONFIG_FILE, "r") as f:
