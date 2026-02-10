@@ -14,88 +14,13 @@ CACHE_FILE = os.path.join(CACHE_DIR, "pricing_cache.json")
 SKU_CACHE_FILE = os.path.join(CACHE_DIR, "sku_cache.json")
 CACHE_EXPIRY = 86400  # 1 day in seconds
 
-# ==========================================
-# 1. HARDWARE DEFINITIONS (Updated)
-# ==========================================
-MACHINE_SPECS = {
-    # --- GENERAL PURPOSE ---
-    "n1": {
-        "ratios": {"standard": 3.75, "highmem": 6.50, "highcpu": 0.90},
-        "search_cpu": "n1 instance core", 
-        "search_ram": "n1 instance ram"
-    },
-    "n2": {
-        "ratios": {"standard": 4.0, "highmem": 8.0, "highcpu": 1.0},
-        "search_cpu": "n2 instance core", 
-        "search_ram": "n2 instance ram"
-    },
-    "n2d": {
-        "ratios": {"standard": 4.0, "highmem": 8.0, "highcpu": 1.0},
-        "search_cpu": "n2d amd instance core",
-        "search_ram": "n2d amd instance ram"
-    },
-    "n4": {
-        "ratios": {"standard": 4.0, "highmem": 8.0, "highcpu": 1.0},
-        "search_cpu": "n4 instance core", 
-        "search_ram": "n4 instance ram"
-    },
-    "n4a": {
-        "ratios": {"standard": 4.0, "highmem": 8.0, "highcpu": 1.0},
-        "search_cpu": "n4a instance core",
-        "search_ram": "n4a instance ram"
-    },
-    "n4d": {
-        "ratios": {"standard": 4.0, "highmem": 8.0, "highcpu": 1.0},
-        "search_cpu": "n4d instance core",
-        "search_ram": "n4d instance ram"
-    },
-    "e2": {
-        "ratios": {"standard": 4.0, "highmem": 8.0, "highcpu": 1.0},
-        "search_cpu": "e2 instance core", 
-        "search_ram": "e2 instance ram"
-    },
-    
-    # --- COMPUTE OPTIMIZED ---
-    "c2": {
-        "ratios": {"standard": 4.0}, 
-        "search_cpu": "compute optimized core", 
-        "search_ram": "compute optimized ram"
-    },
-    "c3": {
-        "ratios": {"standard": 4.0, "highmem": 8.0, "highcpu": 2.0},
-        "search_cpu": "c3 instance core", 
-        "search_ram": "c3 instance ram"
-    },
-    "c3d": {
-        "ratios": {"standard": 4.0, "highmem": 8.0, "highcpu": 2.0},
-        "search_cpu": "c3d instance core", 
-        "search_ram": "c3d instance ram"
-    },
-    "c4": {
-        "ratios": {"standard": 3.75, "highmem": 7.75, "highcpu": 2.0},
-        "search_cpu": "c4 instance core",
-        "search_ram": "c4 instance ram"
-    },
-    "c4a": {
-        "ratios": {"standard": 4.0, "highmem": 8.0, "highcpu": 2.0},
-        "search_cpu": "c4a arm instance core",
-        "search_ram": "c4a arm instance ram"
-    },
-    "c4d": {
-        "ratios": {"standard": 4.0, "highmem": 8.0, "highcpu": 2.0},
-        "search_cpu": "c4d instance core",
-        "search_ram": "c4d instance ram"
-    },
+import os
+import json
 
-
-    # --- MEMORY OPTIMIZED (FIXED) ---
-    "m3": {
-        "ratios": {"megamem": 15.25, "ultramem": 30.5},
-        # M3 puts "Memory-optimized" in the middle of the string
-        "search_cpu": "m3 memory-optimized instance core",
-        "search_ram": "m3 memory-optimized instance ram"
-    }
-}
+# Setup config path and load MACHINE_SPECS
+CONFIG_FILE = os.path.join(os.path.dirname(__file__), "config", "machine_specs.json")
+with open(CONFIG_FILE, "r") as f:
+    MACHINE_SPECS = json.load(f)
 
 # ==========================================
 # 2. LOGIC TO PARSE INPUT
