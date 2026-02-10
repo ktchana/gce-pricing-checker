@@ -12,7 +12,7 @@ To ensure fast execution, the tool implements a **two-layer local caching system
 2. **Pricing Cache** (`caches/pricing_cache.json`): Caches the final parsed vCPU and RAM price calculations for instant subsequent lookups.
 
 ## Features
-- **Supported Families:** General Purpose (N1, N2, N4, E2), Compute-Optimized (C2, C4), and Memory-Optimized (M3).
+- **Supported Families:** General Purpose (N1, N2, N2D, N4, N4A, N4D, E2), Compute-Optimized (C2, C3, C3D, C4, C4A, C4D), and Memory-Optimized (M3).
 - **Auto Resource Calculation:** Dynamically calculates total RAM based on standard GCP CPU-to-RAM ratios for standard, highmem, and highcpu profiles.
 - **Environment Variables:** Set defaults via a `.env` file for project and region context without exposing secrets in your script.
 
