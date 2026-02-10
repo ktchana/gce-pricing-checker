@@ -153,7 +153,7 @@ def fetch_and_cache_skus():
             json.dump({
                 "timestamp": time.time(),
                 "skus": simplified_skus
-            }, f)
+            }, f, indent=2)
     except Exception as e:
         print(f"⚠️ SKU Cache write error: {e}")
 
